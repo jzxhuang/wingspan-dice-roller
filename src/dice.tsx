@@ -28,12 +28,16 @@ type DiceProps = {
 export function Dice(props: DiceProps) {
   return (
     <button
-      class="group relative rounded-lg overflow-hidden"
+      class="group relative rounded-lg overflow-hidden bg-white w-full aspect-square"
       onClick={props.onClick}
       data-available={props.diceState.isAvailable}
     >
-      <img src={facesToImg[props.diceState.face]} alt={props.diceState.face} />
-      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors group-data-[available=false]:bg-black/60" />
+      {props.diceState.isAvailable ? (
+        <>
+          <img src={facesToImg[props.diceState.face]} alt={props.diceState.face} />
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors group-data-[available=false]:bg-black/60" />
+        </>
+      ) : null}
     </button>
   )
 }
